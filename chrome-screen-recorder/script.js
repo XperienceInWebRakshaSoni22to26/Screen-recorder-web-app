@@ -123,27 +123,29 @@ async function startScreenCapture() {
         };
 
 
-        // Start Recording
-        mediaRecorder.start(1000);
+        
+       // Button states
+
+startBtn.disabled = true;
+
+pauseBtn.disabled = false;
+
+resumeBtn.disabled = true;
+
+stopBtn.disabled = false;
+
+downloadBtn.disabled = true;
 
 
-        console.log(
-            "Recorder State:",
-            mediaRecorder.state
-        );
+// Start Recording
+
+mediaRecorder.start(1000);
 
 
-        // Button states
-
-        startBtn.disabled = true;
-
-        pauseBtn.disabled = false;
-
-        resumeBtn.disabled = true;
-
-        stopBtn.disabled = false;
-
-        downloadBtn.disabled = true;
+console.log(
+    "Recorder State:",
+    mediaRecorder.state
+);
 
 
 
@@ -162,14 +164,7 @@ async function startScreenCapture() {
 
 
 
-
 function pauseRecording(){
-
-    console.log(
-        "Before Pause:",
-        mediaRecorder.state
-    );
-
 
     if(
         mediaRecorder &&
@@ -178,9 +173,9 @@ function pauseRecording(){
 
         mediaRecorder.pause();
 
+        console.log("Recording paused");
 
         pauseBtn.disabled = true;
-
         resumeBtn.disabled = false;
 
     }
@@ -192,12 +187,6 @@ function pauseRecording(){
 
 function resumeRecording(){
 
-    console.log(
-        "Before Resume:",
-        mediaRecorder.state
-    );
-
-
     if(
         mediaRecorder &&
         mediaRecorder.state === "paused"
@@ -205,9 +194,9 @@ function resumeRecording(){
 
         mediaRecorder.resume();
 
+        console.log("Recording resumed");
 
         pauseBtn.disabled = false;
-
         resumeBtn.disabled = true;
 
     }
@@ -220,7 +209,6 @@ function resumeRecording(){
 
 function stopRecording(){
 
-
     if(
         mediaRecorder &&
         mediaRecorder.state !== "inactive"
@@ -231,21 +219,24 @@ function stopRecording(){
     }
 
 
+    if(screenStream){
 
-    if(combinedStream){
-
-        combinedStream
+        screenStream
         .getTracks()
-        .forEach(track => {
-            track.stop();
-        });
+        .forEach(track => track.stop());
 
     }
 
 
+    if(microphoneStream){
+
+        microphoneStream
+        .getTracks()
+        .forEach(track => track.stop());
+
+    }
+
 }
-
-
 
 
 
