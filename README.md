@@ -76,24 +76,28 @@ Example:
 ```
 assets/
 └── screenshots/
-    ├── home.png
-    ├── recording.png
-    └── preview.png
+    ├── Homescreen.png
+    ├── downloadrecording.png
+    └── recordingpage.png
 ```
 
 Then update this section like:
+## 📸 Screenshots
 
-### Home Screen
 
-![Home](assets/screenshots/home.png)
+### 🏠 Home Screen
 
-### Recording
+![Home Screen](assets/screenshots/Homescreen.png)
 
-![Recording](assets/screenshots/recording.png)
 
-### Preview
+### 🎥 Recording Screen
 
-![Preview](assets/screenshots/preview.png)
+![Recording Screen](assets/screenshots/recordingpage.png)
+
+
+### 💾 Download Recording
+
+![Download Recording](assets/screenshots/downloadrecording.png)
 
 ---
 
