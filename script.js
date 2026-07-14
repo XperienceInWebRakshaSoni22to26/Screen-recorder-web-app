@@ -36,7 +36,13 @@ async function startScreenCapture() {
             ...screenStream.getVideoTracks(),
             ...microphoneStream.getAudioTracks()
         ]);
+screenStream.getVideoTracks()[0].onended = () => {
 
+    if (mediaRecorder && mediaRecorder.state !== "inactive") {
+        stopRecording();
+    }
+
+};
         // Show live preview
         previewVideo.srcObject = combinedStream;
         previewVideo.play();
@@ -99,6 +105,7 @@ function stopRecording() {
     if (combinedStream) {
         combinedStream.getTracks().forEach(track => track.stop());
     }
+
 }
 function downloadRecording() {
 
