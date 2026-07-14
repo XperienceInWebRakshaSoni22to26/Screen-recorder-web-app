@@ -4,35 +4,22 @@
     box-sizing:border-box;
 }
 body {
-
     font-family: Arial, Helvetica, sans-serif;
-
-    background: #eef2ff;
-
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     min-height: 100vh;
-
     padding: 20px;
-
 }
 
 .container {
-
     width: 700px;
-
+    max-width: 100%;
     background: white;
-
     padding: 30px;
-
     border-radius: 15px;
-
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-
+    box-shadow: 0 15px 35px rgba(0,0,0,.2);
 }
 
 h1 {
@@ -68,33 +55,26 @@ h1 {
 }
 
 button {
-
-    padding: 12px 18px;
-
+    padding: 12px 20px;
     border: none;
-
     border-radius: 8px;
-
     cursor: pointer;
-
     font-size: 15px;
-
-    transition: 0.3s;
-
+    font-weight: bold;
+    transition: all .3s ease;
 }
 
 button:hover:not(:disabled) {
+    transform: translateY(-3px);
+}
 
-    transform: translateY(-2px);
-
+button:active:not(:disabled) {
+    transform: scale(.97);
 }
 
 button:disabled {
-
-    opacity: .5;
-
     cursor: not-allowed;
-
+    opacity: .5;
 }
 
 #startBtn {
@@ -160,5 +140,20 @@ video {
     border-radius: 10px;
 
     background: black;
+
+}
+@media (max-width: 768px) {
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    video {
+        height: 250px;
+    }
 
 }
