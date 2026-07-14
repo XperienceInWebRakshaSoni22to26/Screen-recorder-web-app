@@ -10,6 +10,54 @@
 </head>
 
 <body>
+<div class="container">
+
+        <h1>🎥 Screen Recorder</h1>
+
+        <p class="subtitle">
+            Record your screen with microphone audio
+        </p>
+
+        <div class="buttons">
+
+            <button id="startBtn">
+                Start Recording
+            </button>
+
+            <button id="pauseBtn" disabled>
+                Pause
+            </button>
+
+            <button id="resumeBtn" disabled>
+                Resume
+            </button>
+
+            <button id="stopBtn" disabled>
+                Stop
+            </button>
+
+        </div>
+
+        <div class="preview">
+
+            <h2>Preview</h2>
+
+            <video
+                id="previewVideo"
+                controls>
+            </video>
+
+        </div>
+
+        <button
+            id="downloadBtn"
+            disabled>
+
+            Download Recording
+
+        </button>
+
+    </div>
 
     <script src="script.js"></script>
 
