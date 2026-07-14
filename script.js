@@ -13,6 +13,9 @@ let screenStream;
 
 let microphoneStream;
 let combinedStream;
+let mediaRecorder;
+let recordedChunks = [];
+
 startBtn.addEventListener("click", startScreenCapture);
 
 async function startScreenCapture() {
@@ -30,6 +33,26 @@ async function startScreenCapture() {
     ...screenStream.getVideoTracks(),
     ...microphoneStream.getAudioTracks()
 ]);
+mediaRecorder = new MediaRecorder(combinedStream);
+recordedChunks = [];
+
+mediaRecorder.ondataavailable = function (event) {
+
+    if (event.data.size > 0) {
+
+        recordedChunks.push(event.data);
+
+    }
+
+};
+
+mediaRecorder.start();
+
+startBtn.disabled = true;
+pauseBtn.disabled = false;
+resumeBtn.disabled = true;
+stopBtn.disabled = false;
+downloadBtn.disabled = true;
 
         previewVideo.srcObject = combinedStream;
 
