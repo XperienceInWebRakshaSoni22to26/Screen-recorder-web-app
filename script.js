@@ -10,6 +10,8 @@ const downloadBtn = document.getElementById("downloadBtn");
 
 const previewVideo = document.getElementById("previewVideo");
 let screenStream;
+
+let microphoneStream;
 startBtn.addEventListener("click", startScreenCapture);
 
 async function startScreenCapture() {
@@ -20,17 +22,19 @@ async function startScreenCapture() {
             video: true
         });
 
+        microphoneStream = await navigator.mediaDevices.getUserMedia({
+            audio: true
+        });
+
         previewVideo.srcObject = screenStream;
 
         previewVideo.play();
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
         console.error(error);
 
-        alert("Screen sharing was cancelled.");
+        alert("Permission denied or cancelled.");
 
     }
 
