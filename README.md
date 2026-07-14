@@ -33,7 +33,7 @@ A simple and responsive **Chrome Screen Recorder** built using **HTML, CSS, and 
 ## 📂 Project Structure
 
 ```
-chrome-screen-recorder/
+
 │
 ├── index.html
 ├── style.css
