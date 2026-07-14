@@ -16,6 +16,8 @@ let recordedBlob = null;
 startBtn.addEventListener("click", startScreenCapture);
 stopBtn.addEventListener("click", stopRecording);
 downloadBtn.addEventListener("click", downloadRecording);
+pauseBtn.addEventListener("click", pauseRecording);
+resumeBtn.addEventListener("click", resumeRecording);
 
 async function startScreenCapture() {
     try {
@@ -120,5 +122,29 @@ function downloadRecording() {
     document.body.removeChild(a);
 
     URL.revokeObjectURL(downloadURL);
+
+}
+function pauseRecording() {
+
+    if (mediaRecorder && mediaRecorder.state === "recording") {
+
+        mediaRecorder.pause();
+
+        pauseBtn.disabled = true;
+        resumeBtn.disabled = false;
+
+    }
+
+}
+function resumeRecording() {
+
+    if (mediaRecorder && mediaRecorder.state === "paused") {
+
+        mediaRecorder.resume();
+
+        pauseBtn.disabled = false;
+        resumeBtn.disabled = true;
+
+    }
 
 }
