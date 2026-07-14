@@ -15,6 +15,7 @@ let recordedBlob = null;
 // Event Listeners
 startBtn.addEventListener("click", startScreenCapture);
 stopBtn.addEventListener("click", stopRecording);
+downloadBtn.addEventListener("click", downloadRecording);
 
 async function startScreenCapture() {
     try {
@@ -96,4 +97,28 @@ function stopRecording() {
     if (combinedStream) {
         combinedStream.getTracks().forEach(track => track.stop());
     }
+}
+function downloadRecording() {
+
+    if (!recordedBlob) {
+        alert("No recording available!");
+        return;
+    }
+
+    const downloadURL = URL.createObjectURL(recordedBlob);
+
+    const a = document.createElement("a");
+
+    a.href = downloadURL;
+
+    a.download = "screen-recording.webm";
+
+    document.body.appendChild(a);
+
+    a.click();
+
+    document.body.removeChild(a);
+
+    URL.revokeObjectURL(downloadURL);
+
 }
