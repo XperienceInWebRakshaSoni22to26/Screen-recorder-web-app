@@ -12,6 +12,7 @@ const previewVideo = document.getElementById("previewVideo");
 let screenStream;
 
 let microphoneStream;
+let combinedStream;
 startBtn.addEventListener("click", startScreenCapture);
 
 async function startScreenCapture() {
@@ -25,8 +26,12 @@ async function startScreenCapture() {
         microphoneStream = await navigator.mediaDevices.getUserMedia({
             audio: true
         });
+        combinedStream = new MediaStream([
+    ...screenStream.getVideoTracks(),
+    ...microphoneStream.getAudioTracks()
+]);
 
-        previewVideo.srcObject = screenStream;
+        previewVideo.srcObject = combinedStream;
 
         previewVideo.play();
 
